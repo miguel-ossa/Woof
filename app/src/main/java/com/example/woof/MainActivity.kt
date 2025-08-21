@@ -122,6 +122,24 @@ fun WoofApp() {
     }
 }
 
+@Composable
+fun DogHobby(
+    @StringRes dogHobby: Int,
+    modifier: Modifier = Modifier
+){
+    Column(
+        modifier = modifier
+    ) {
+        Text(
+            text = stringResource(R.string.about),
+            style = MaterialTheme.typography.labelSmall
+        )
+        Text(
+            text = stringResource(dogHobby),
+            style = MaterialTheme.typography.bodyLarge
+        )
+    }
+}
 
 /**
  * Composable that displays a list item containing a dog icon and their information.
@@ -149,6 +167,15 @@ fun DogItem(
                 onClick = { /*TODO*/ }
             )
         }
+        DogHobby(
+            dog.hobbies,
+            modifier = Modifier.padding(
+                start = dimensionResource(R.dimen.padding_medium),
+                top = dimensionResource(R.dimen.padding_small),
+                end = dimensionResource(R.dimen.padding_medium),
+                bottom = dimensionResource(R.dimen.padding_medium)
+            )
+        )
     }
 }
 
@@ -169,7 +196,6 @@ private fun DogItemButton(
         )
     }
 }
-
 
 /**
  * Composable that displays a photo of a dog.
